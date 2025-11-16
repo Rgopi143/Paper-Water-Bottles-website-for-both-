@@ -16,6 +16,10 @@ export type Profile = {
   role: 'buyer' | 'seller' | 'admin';
   avatar_url?: string;
   phone?: string;
+  address?: string;
+  city?: string;
+  state?: string;
+  pincode?: string;
   created_at: string;
   updated_at: string;
 };
