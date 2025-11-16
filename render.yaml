@@ -1,0 +1,32 @@
+# Render Blueprint for Paper Water Bottles E-commerce
+# Reference: https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: paper-water-bottles
+    env: node
+    buildCommand: npm install && npm run build
+    startCommand: npm run start:production
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: VITE_SUPABASE_URL
+        fromDatabase:
+          name: supabase
+          property: connectionString
+      - key: VITE_SUPABASE_ANON_KEY
+        fromDatabase:
+          name: supabase
+          property: keys.anon
+
+# Uncomment and configure if you need a PostgreSQL database
+# databases:
+#   - name: paper-water-bottles-db
+#     databaseName: paper_water_bottles
+#     user: paper_water_bottles_user
+#     plan: free
+
+# Uncomment and configure if you need a Redis instance
+# redis:
+#   - name: paper-water-bottles-cache
+#     plan: free
